@@ -1,0 +1,15 @@
+---
+layout: base.njk
+title: My Journal
+---
+<div class="post-list">
+  {% for post in collections.posts | reverse %}
+  <article class="entry">
+    <a class="entry-title" href="{{ post.url }}">{{ post.data.title }}</a>
+    <time class="entry-date">{{ post.date | readableDate }}</time>
+    <p class="entry-excerpt">{{ post.templateContent | striptags | truncate(160) }}</p>
+  </article>
+  {% else %}
+  <p class="empty">No entries yet. Log in to the admin panel to write your first one.</p>
+  {% endfor %}
+</div>
